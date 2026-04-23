@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html class="light" lang="tr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Duyum İşitme Merkezi | Çanakkale</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "error": "#ba1a1a",
+            "primary-container": "#d32f2f",
+            "surface-bright": "#f9f9f9",
+            "secondary-fixed-dim": "#c6c7c5",
+            "on-primary-container": "#fff2f0",
+            "on-surface": "#1a1c1c",
+            "on-primary": "#ffffff",
+            "on-error": "#ffffff",
+            "surface-tint": "#ba1a20",
+            "error-container": "#ffdad6",
+            "primary-fixed-dim": "#ffb3ac",
+            "secondary-fixed": "#e2e3e1",
+            "on-tertiary-fixed": "#001f2a",
+            "primary-fixed": "#ffdad6",
+            "tertiary": "#005f7b",
+            "tertiary-fixed-dim": "#7bd1f8",
+            "primary": "#af101a",
+            "surface-container-high": "#e8e8e8",
+            "on-tertiary-fixed-variant": "#004d65",
+            "outline-variant": "#e4beba",
+            "on-secondary-fixed-variant": "#454746",
+            "surface-container-lowest": "#ffffff",
+            "inverse-surface": "#2f3131",
+            "on-secondary": "#ffffff",
+            "surface-container-highest": "#e2e2e2",
+            "on-primary-fixed": "#410003",
+            "inverse-on-surface": "#f1f1f1",
+            "on-tertiary": "#ffffff",
+            "tertiary-fixed": "#bee9ff",
+            "surface-container": "#eeeeee",
+            "secondary-container": "#e2e3e1",
+            "surface": "#f9f9f9",
+            "on-tertiary-container": "#e9f7ff",
+            "on-secondary-fixed": "#1a1c1b",
+            "surface-variant": "#e2e2e2",
+            "tertiary-container": "#00799c",
+            "on-surface-variant": "#5b403d",
+            "outline": "#8f6f6c",
+            "surface-container-low": "#f3f3f3",
+            "on-error-container": "#93000a",
+            "on-primary-fixed-variant": "#930010",
+            "on-secondary-container": "#636564",
+            "secondary": "#5d5f5e",
+            "background": "#f9f9f9",
+            "on-background": "#1a1c1c",
+            "inverse-primary": "#ffb3ac",
+            "surface-dim": "#dadada"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "fontFamily": {
+            "headline": ["Manrope"],
+            "body": ["Manrope"],
+            "label": ["Manrope"]
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    body {
+      min-height: max(884px, 100dvh);
+    }
+
+    .nav-link-active {
+      color: #af101a;
+      font-weight: 700;
+      border-bottom: 2px solid #af101a;
+      padding-bottom: 4px;
+    }
+
+    /* Navbar yüksekliği kadar scroll offset */
+    section[id] {
+      scroll-margin-top: 120px;
+    }
+  </style>
+</head>
+
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed-dim selection:text-primary">
+
+  <!-- NAVBAR -->
+  <header class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md shadow-sm shadow-zinc-200/50">
+    <div class="flex justify-between items-center px-6 py-3 max-w-7xl mx-auto">
+      <!-- Sol: Marka adı -->
+      <a href="#hero" class="text-red-700 font-black uppercase tracking-widest text-base font-headline whitespace-nowrap">
+        Duyum İşitme
+      </a>
+      <!-- Orta: Nav linkleri (desktop) -->
+      <nav class="hidden md:flex items-center gap-7">
+        <a class="nav-link-active font-headline tracking-tight text-sm" href="#hero">Ana Sayfa</a>
+        <a class="text-zinc-600 font-medium hover:text-red-600 transition-colors font-headline tracking-tight text-sm" href="#kurumsal">Kurumsal</a>
+        <a class="text-zinc-600 font-medium hover:text-red-600 transition-colors font-headline tracking-tight text-sm" href="#bilgi">Bilgi</a>
+        <a class="text-zinc-600 font-medium hover:text-red-600 transition-colors font-headline tracking-tight text-sm" href="#urunler">Cihazlar</a>
+        <a class="text-zinc-600 font-medium hover:text-red-600 transition-colors font-headline tracking-tight text-sm" href="#hizmetler">Hizmetler</a>
+        <a class="text-zinc-600 font-medium hover:text-red-600 transition-colors font-headline tracking-tight text-sm" href="#iletisim">İletişim</a>
+      </nav>
+      <!-- Sağ: CTA + hamburger -->
+      <div class="flex items-center gap-3">
+        <button id="hamburger" class="md:hidden p-1" aria-label="Menü">
+          <span class="material-symbols-outlined text-red-700">menu</span>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-zinc-100 px-6 py-4 flex flex-col gap-4">
+      <a class="text-red-700 font-bold font-headline" href="#hero">Ana Sayfa</a>
+      <a class="text-zinc-600 font-medium font-headline" href="#kurumsal">Kurumsal</a>
+      <a class="text-zinc-600 font-medium font-headline" href="#bilgi">Bilgi</a>
+      <a class="text-zinc-600 font-medium font-headline" href="#urunler">Cihazlar</a>
+      <a class="text-zinc-600 font-medium font-headline" href="#hizmetler">Hizmetler</a>
+      <a class="text-zinc-600 font-medium font-headline" href="#iletisim">İletişim</a>
+    </div>
+  </header>
+
+  <main class="pt-16">
+
+    <!-- HERO -->
+    <section class="relative min-h-[100svh] lg:min-h-[751px] flex items-center overflow-hidden bg-surface-container-low py-32 md:py-0" id="hero">
+      <div class="absolute inset-0 z-0">
+        <img alt="İşitme Merkezi Hero" class="w-full h-full object-cover object-center opacity-90"
+          src="assets/hero_bg_sade.png" />
+        <div class="absolute inset-0 bg-white/60 md:bg-white/40"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+      </div>
+      <div class="container mx-auto px-6 relative z-10 flex flex-col items-center text-center">
+        <div class="max-w-4xl flex flex-col items-center">
+          <img src="assets/logo_hero.png" alt="Duyum İşitme Cihazları"
+               class="h-40 md:h-52 object-contain mb-2 pointer-events-none"
+               style="mix-blend-mode:multiply; position:relative; top:-80px;"/>
+          <h1 class="text-6xl md:text-8xl lg:text-9xl font-bold text-on-surface tracking-tighter leading-[1.1] md:leading-tight mb-8">
+            Ses, <span class="text-primary italic font-light">Özgürce.</span>
+          </h1>
+          <p class="text-lg md:text-2xl text-zinc-800 max-w-3xl leading-relaxed mb-10 font-medium">
+            İşitme sağlığınızı en ileri teknoloji ve uzman kadromuzla koruyoruz.
+            Duymanın farkını birlikte keşfedin.
+          </p>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full max-w-3xl mt-2">
+            <a href="#ucretsiz-test"
+              class="flex flex-col items-center justify-center gap-2 bg-primary hover:bg-red-800 text-white px-4 py-5 rounded-xl font-bold text-sm shadow-lg shadow-primary/25 hover:-translate-y-1 transition-all text-center">
+              <span class="material-symbols-outlined text-2xl">volume_up</span>
+              Hızlı İşitme<br/>Testi Yap
+            </a>
+            <a href="#urunler"
+              class="flex flex-col items-center justify-center gap-2 bg-zinc-700 hover:bg-zinc-900 text-white px-4 py-5 rounded-xl font-bold text-sm shadow-lg hover:-translate-y-1 transition-all text-center">
+              <span class="material-symbols-outlined text-2xl">hearing</span>
+              Cihazları<br/>İncele
+            </a>
+            <a href="https://www.google.com/maps/place/Duyum+%C4%B0%C5%9Fitme+%C3%87anakkale/@40.147744,26.4057695,17z/data=!4m6!3m5!1s0x14b1a9d07523ad11:0x8b75253e5aa51e14!8m2!3d40.1477781!4d26.4057978!16s%2Fg%2F11n4ql7wd1?entry=ttu&g_ep=EgoyMDI2MDQwOC4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank" rel="noopener"
+              class="flex flex-col items-center justify-center gap-2 bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white px-4 py-5 rounded-xl font-bold text-sm shadow-lg hover:-translate-y-1 transition-all text-center">
+              <span class="material-symbols-outlined text-2xl">map</span>
+              Yol<br/>Tarifi Al
+            </a>
+            <a href="#iletisim"
+              class="flex flex-col items-center justify-center gap-2 bg-white border-2 border-zinc-300 text-zinc-700 hover:border-zinc-600 hover:text-zinc-900 px-4 py-5 rounded-xl font-bold text-sm shadow-lg hover:-translate-y-1 transition-all text-center">
+              <span class="material-symbols-outlined text-2xl">call</span>
+              İletişime<br/>Geç
+            </a>
+          </div>
+
+          <!-- Stat chips — butonların altında, akış içinde -->
+          <div class="flex flex-wrap justify-center gap-3 mt-8">
+            <div class="bg-white/90 backdrop-blur-sm px-5 py-3 rounded-full shadow text-sm font-bold text-zinc-800">
+              <span class="text-primary text-base">10+</span> Yıllık Deneyim
+            </div>
+            <div class="bg-white/90 backdrop-blur-sm px-5 py-3 rounded-full shadow text-sm font-bold text-zinc-800">
+              <span class="text-primary text-base">2000+</span> Mutlu Hasta
+            </div>
+            <div class="bg-white/90 backdrop-blur-sm px-5 py-3 rounded-full shadow text-sm font-bold text-zinc-800">
+              <span class="text-primary text-base">50+</span> Marka & Model
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ÜCRETSİZ TEST BANNER (KLİNİKTE) -->
+    <section class="bg-primary-container text-on-primary-container py-12 px-6">
+      <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 text-center lg:text-left">
+        <div class="flex-1">
+          <div class="flex flex-col lg:flex-row items-center gap-3 mb-4 justify-center lg:justify-start">
+            <span class="material-symbols-outlined text-4xl">medical_services</span>
+            <h3 class="text-2xl md:text-3xl font-bold tracking-tight">Kliniğimizde Ücretsiz İşitme Testi</h3>
+          </div>
+          <p class="text-base md:text-lg text-primary-fixed-dim leading-relaxed max-w-3xl mx-auto lg:mx-0">
+            Dükkanımızda ücretsiz ve kapsamlı işitme testi yapıyoruz! İşitme kaybınızın seviyesini öğrenmek ve size en
+            uygun cihaz seçeneklerini değerlendirmek için merkezimize gelip tamamen ücretsiz testinizi
+            yaptırabilirsiniz.
+          </p>
+        </div>
+        <div class="flex-shrink-0 w-full lg:w-auto">
+          <a href="#iletisim"
+            class="bg-white text-primary px-8 py-4 rounded-md font-bold text-base md:text-lg shadow-lg hover:scale-105 transition-transform flex justify-center items-center gap-2">
+            <span class="material-symbols-outlined text-xl">location_on</span>
+            Bizi Ziyaret Edin
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ONLINE SES TESTİ -->
+    <section class="bg-surface-container-low text-primary py-16 px-6 border-b border-outline-variant/30"
+      id="ucretsiz-test">
+      <div class="max-w-4xl mx-auto text-center">
+        <h4 class="text-3xl font-bold mb-4 tracking-tight">Hızlı Online Ses Testi</h4>
+        <p class="text-secondary text-lg mb-10 leading-relaxed">Şu an evde misiniz? Cihazınızın sesini %50 seviyesine
+          getirin ve sessiz bir ortamda başlat tuşuna basarak 4000 Hz'lik ince test sesini duyabildiğinize emin olun.
+        </p>
+
+        <div class="relative w-32 h-32 mx-auto mb-8 cursor-pointer group" onclick="playHearingTestTone(this)"
+          id="audio-test-btn">
+          <div
+            class="absolute inset-0 rounded-full bg-primary-container group-hover:scale-105 transition-transform duration-500 shadow-md">
+          </div>
+          <div
+            class="absolute inset-2 rounded-full bg-primary text-white flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all z-10">
+            <span class="material-symbols-outlined text-5xl ml-1">play_arrow</span>
+          </div>
+          <!-- Wave animation elements -->
+          <div class="wave hidden absolute -inset-2 rounded-full border-2 border-primary/60 animate-ping"
+            style="animation-duration: 2s;"></div>
+          <div class="wave hidden absolute -inset-6 rounded-full border-2 border-primary/40 animate-ping"
+            style="animation-duration: 2s; animation-delay: 0.6s"></div>
+        </div>
+
+        <p class="text-lg font-bold text-primary min-h-[3rem] transition-opacity" id="test-feedback">Sesi Başlat</p>
+      </div>
+    </section>
+
+    <!-- KURUMSAL -->
+    <section class="py-16 md:py-32 bg-white" id="kurumsal">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center flex-col-reverse">
+          <div>
+            <h2 class="text-sm font-black uppercase tracking-[0.3em] text-primary mb-4">Hakkımızda</h2>
+            <h3 class="text-3xl md:text-4xl font-bold tracking-tight mb-8">Tarihçemiz</h3>
+            <p class="text-secondary leading-relaxed mb-6 font-medium">
+              2002 yılında, insanların hayatına yalnızca sesleri değil; sevdiklerinin gülüşünü, bir çocuğun kahkahasını
+              ve hayatın en kıymetli anlarını yeniden kazandırma hayaliyle doğdu Duyum İşitme Cihazları Merkezi.
+            </p>
+            <p class="text-secondary leading-relaxed mb-6">
+              Bu yolculuk, Harun Balcı’nın aldığı güçlü akademik eğitimi sahaya taşımasıyla başladı. Mesleğe duyduğu
+              tutku ve insanlara faydalı olma isteği, zamanla bir aile emeğine dönüştü. Üç kardeşin aynı inanç etrafında
+              birleşmesiyle, bu merkez sadece bir iş yeri değil; bilgi, tecrübe ve güvenin bir araya geldiği bir yapı
+              halini aldı.
+            </p>
+            <p class="text-secondary leading-relaxed mb-6">
+              Alanında uzman odyolog ve odyometristlerden oluşan güçlü kadromuzla, her geçen gün büyüyen bir aile olduk.
+              Bugün; Kdz. Ereğli, Zonguldak, Bartın (2 şube), Çaycuma ve son olarak Çanakkale’de açılan şubemizle toplam
+              6 noktada hizmet veriyor olmanın gururunu yaşıyoruz.
+            </p>
+            <p class="text-secondary leading-relaxed mb-6">
+              Yıllar içinde gelişen teknolojiye uyum sağlarken, insan odaklı yaklaşımımızdan asla ödün vermedik. Her
+              danışanımızın hikayesini dinledik, her ihtiyaca özel çözümler sunduk. Bugün geldiğimiz noktada, binlerce
+              insanın yeniden duymasına vesile olmanın mutluluğunu taşıyoruz. Ve ilk günkü heyecanımızla, daha çok
+              hayata dokunmaya devam ediyoruz.
+            </p>
+          </div>
+          <div class="relative">
+            <img src="assets/harun_balci.jpg" alt="Harun Balcı"
+              class="rounded-xl shadow-2xl w-full object-cover aspect-[4/5] object-top">
+            <div class="absolute -bottom-8 -left-8 bg-surface-container-low p-6 rounded-xl shadow-xl w-64 max-w-[80%]">
+              <p class="font-bold text-lg mb-1">Harun Balcı</p>
+              <p class="text-sm text-secondary">Kurucu Odyolog</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-16 md:mt-32 grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center flex-col">
+          <div class="relative">
+            <img src="assets/sube.jpg" alt="Duyum İşitme Merkezi Şube"
+              class="rounded-xl shadow-2xl w-full object-cover aspect-[4/3] md:aspect-video">
+            <!-- 3 Kardeş Kartı -->
+            <div
+              class="flex md:absolute mt-6 md:mt-0 relative md:-bottom-12 md:-right-6 lg:right-12 bg-white/90 md:backdrop-blur-md p-6 rounded-xl shadow-md md:shadow-xl border border-outline-variant/30 gap-4 w-full md:w-[400px] flex-col md:flex-row items-center md:items-start text-center md:text-left z-20">
+              <span class="material-symbols-outlined text-primary text-4xl">school</span>
+              <div>
+                <h4 class="font-bold text-lg mb-1">Uzman Kadro & Diplomalar</h4>
+                <p class="text-xs text-secondary">
+                  3 kardeş olarak aldığımız akademik eğitim ve tecrübeyi harmanlayarak, yıllardır profesyonel çözümler
+                  sunuyoruz.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-8 md:mt-0">
+            <h3 class="text-3xl md:text-4xl font-bold tracking-tight mb-6">Vizyonumuz</h3>
+            <p class="text-secondary leading-relaxed mb-8">
+              Duyum İşitme Cihazları Merkezi olarak vizyonumuz; işitme sağlığı alanında sadece hizmet sunan bir merkez
+              değil, insanların hayatına dokunan, güven veren ve fark yaratan öncü bir marka olmaktır.
+            </p>
+            <p class="text-secondary leading-relaxed mb-8">
+              Tüm dünyaca bilinen işitme cihazı markalarıyla çalışarak, danışanlarımıza en doğru ve en güncel çözümleri
+              sunarken; aynı zamanda kendi değerlerimizi yansıtan güçlü ve güvenilir bir marka oluşturmayı hedefliyoruz.
+            </p>
+            <p class="text-secondary leading-relaxed mb-8">
+              Teknoloji ile samimiyeti bir araya getirerek, işitmenin sadece bir ihtiyaç değil, yaşam kalitesinin
+              vazgeçilmez bir parçası olduğunu herkese hissettirmek istiyoruz. Gelecekte, daha fazla insanın sessizliğe
+              mahkûm kalmadığı ve herkesin hayatın seslerine eşit şekilde ulaşabildiği bir dünya hayal ediyoruz.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BİLGİ KÖŞESİ -->
+    <section class="py-16 md:py-32 bg-surface-container-low" id="bilgi">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16 md:mb-20">
+          <h2 class="text-sm font-black uppercase tracking-[0.3em] text-primary mb-4">Rehber</h2>
+          <h3 class="text-3xl md:text-4xl font-bold tracking-tight">İşitme Sağlığı</h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-16 md:mb-20">
+          <div
+            class="bg-white p-8 rounded-xl shadow-sm border border-outline-variant/20 group hover:-translate-y-1 transition-transform">
+            <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6 text-primary">
+              <span class="material-symbols-outlined text-2xl">hearing_disabled</span>
+            </div>
+            <h4 class="text-2xl font-bold mb-4">İşitme Kaybı Hakkında Bilgi</h4>
+            <p class="text-secondary leading-relaxed">
+              İşitme kaybı; yaşa, gürültülü ortamlara maruz kalmaya, genetik veya tıbbi nedenlere bağlı olarak
+              gelişebilir. Erken teşhis edilip doğru cihazlarla desteklendiğinde, kişinin yaşam kalitesinde kayda değer
+              bir düşüş yaşanmasının önüne geçilir. Tedavi edilmeyen işitme kayıpları sosyal izolasyona ve bilişsel
+              yetilerde gerilemeye sebep olabilir.
+            </p>
+          </div>
+
+          <div
+            class="bg-white p-8 rounded-xl shadow-sm border border-outline-variant/20 group hover:-translate-y-1 transition-transform">
+            <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6 text-primary">
+              <span class="material-symbols-outlined text-2xl">receipt_long</span>
+            </div>
+            <h4 class="text-2xl font-bold mb-4">Fiyatı Arttıran / Belirleyen Özellikler</h4>
+            <p class="text-secondary leading-relaxed">
+              İşitme cihazlarında maliyeti belirleyen en önemli faktörler;
+              <strong>yapay zeka destekli</strong> ses işleme yeteneği,
+              <strong>gürültü baskılama</strong> ve <strong>yönsel mikrofon</strong> algoritmalarının gelişmişliğidir.
+              Ayrıca Bluetooth bağlantısı, şarj edilebilir piller ve kanal sayısının fazlalığı fiyatları artırmaktadır.
+            </p>
+          </div>
+        </div>
+
+        <h4 class="text-2xl font-bold text-center mb-12">İşitme Modelleri Nelerdir?</h4>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="bg-surface-container-high rounded-xl aspect-square mb-6 flex items-center justify-center p-8">
+              <span class="material-symbols-outlined text-8xl text-secondary">hearing</span>
+            </div>
+            <h5 class="font-bold text-lg mb-2">Kulak Arkası (BTE / RIC)</h5>
+            <p class="text-sm text-secondary px-4">Her türlü işitme kaybı için uygun, kullanımı kolay, akıllı
+              telefonlara doğrudan bağlanan ve estetik RIC seçenekleriyle sıklıkla tercih edilen modellerdir.</p>
+          </div>
+          <div class="text-center">
+            <div class="bg-surface-container-high rounded-xl aspect-square mb-6 flex items-center justify-center p-8">
+              <span class="material-symbols-outlined text-8xl text-secondary">earbuds</span>
+            </div>
+            <h5 class="font-bold text-lg mb-2">Kulak İçi (CIC / ITE)</h5>
+            <p class="text-sm text-secondary px-4">Kulak kanalına özel olarak üretilen, dışarıdan minimal şekilde
+              görünen, maske ve gözlük kullanımıyla sorun yaşamayan modellerdir.</p>
+          </div>
+          <div class="text-center">
+            <div class="bg-surface-container-high rounded-xl aspect-square mb-6 flex items-center justify-center p-8">
+              <span class="material-symbols-outlined text-8xl text-secondary">child_care</span>
+            </div>
+            <h5 class="font-bold text-lg mb-2">Pediatrik Çözümler</h5>
+            <p class="text-sm text-secondary px-4">Çocukların öğrenme serüvenine destek olan, ekstra dayanıklı, ebeveyn
+              kontrollü ve akıllı uyarı ışıklarına sahip özel cihazlardır.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ÜRÜNLER -->
+    <section class="py-16 md:py-32 bg-surface" id="urunler">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="mb-12 md:mb-20">
+          <div class="max-w-md">
+            <h2 class="text-sm font-black uppercase tracking-[0.3em] text-primary mb-4">Yetkili Satıcı</h2>
+            <p class="text-3xl md:text-4xl font-bold tracking-tight">Markalarımız & Cihazlar</p>
+          </div>
+        </div>
+
+        <!-- ===== OTİCON ===== -->
+        <div class="mb-20">
+          <div class="flex items-center justify-between mb-8">
+            <a href="https://www.oticon.com.tr/products/hearing-aids" target="_blank" rel="noopener"
+              class="flex items-center gap-4 group">
+              <img
+                src="https://assets.ha.demant.com/-/media/project/hearing-aid/oticon/shared/images/global/oticon_no_payoff.svg?iar=0&rev=105563005dc5422fb659a83905ed9dba&hash=CC7D5978E2A90F2562EE1ABDC51C485D"
+                alt="Oticon Logo" class="h-10 object-contain group-hover:opacity-70 transition-opacity" />
+              <span
+                class="material-symbols-outlined text-primary text-sm opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+            </a>
+            <a href="https://www.oticon.com.tr/products/hearing-aids" target="_blank" rel="noopener"
+              class="text-primary text-sm font-bold border-b border-primary/20 pb-0.5 hover:border-primary transition-all">
+              Tüm Oticon cihazları →
+            </a>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <a href="https://www.oticon.com.tr/products/hearing-aids" target="_blank" rel="noopener"
+              class="group block">
+              <div
+                class="aspect-[4/3] bg-surface-container-low mb-4 relative overflow-hidden flex items-center justify-center p-8 rounded-xl">
+                <img alt="Oticon Zeal"
+                  class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700"
+                  src="https://assets.ha.demant.com/-/media/project/hearing-aid/oticon/shared/images/global/products/product-subspot-380x240/ot_product_sub_spots_triple_zeal-379x240.jpg?h=240&iar=0&w=379&rev=3b2af09ebdf1448094e4c7113989eff3&hash=6CEDFBB122B63A55AE1F8EB9E48A8435" />
+              </div>
+              <h3 class="text-lg font-bold tracking-tight mb-1 group-hover:text-primary transition-colors">Oticon Zeal
+              </h3>
+              <p class="text-secondary text-sm uppercase tracking-wider">BTE — Çocuklar İçin</p>
+            </a>
+            <a href="https://www.oticon.com.tr/products/hearing-aids" target="_blank" rel="noopener"
+              class="group block md:mt-8">
+              <div
+                class="aspect-[4/3] bg-surface-container-low mb-4 relative overflow-hidden flex items-center justify-center p-8 rounded-xl">
+                <img alt="Oticon Intent"
+                  class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700"
+                  src="https://assets.ha.demant.com/-/media/project/hearing-aid/oticon/shared/images/global/products/product-subspot-380x240/familiycard_intent_380x240.png?h=240&iar=0&w=379&rev=489630d6eb6d435db470280ebad3529d&hash=3492F40801EC259F671A7FCC04052080" />
+                <div class="absolute top-3 right-3">
+                  <span class="bg-primary text-white px-2 py-1 text-[10px] font-bold uppercase">Yeni</span>
+                </div>
+              </div>
+              <h3 class="text-lg font-bold tracking-tight mb-1 group-hover:text-primary transition-colors">Oticon Intent
+              </h3>
+              <p class="text-secondary text-sm uppercase tracking-wider">AI Destekli — RIC</p>
+            </a>
+            <a href="https://www.oticon.com.tr/products/hearing-aids" target="_blank" rel="noopener"
+              class="group block">
+              <div
+                class="aspect-[4/3] bg-surface-container-low mb-4 relative overflow-hidden flex items-center justify-center p-8 rounded-xl">
+                <img alt="Oticon Real"
+                  class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700"
+                  src="https://assets.ha.demant.com/-/media/project/hearing-aid/oticon/shared/images/global/products/product-subspot-380x240/familiycard_real_380x240.png?h=240&iar=0&w=379&rev=398688afd2b34ba0b6ffc8b39f33f373&hash=E878C0E41DA311CBB965EACB7941FEB9" />
+              </div>
+              <h3 class="text-lg font-bold tracking-tight mb-1 group-hover:text-primary transition-colors">Oticon Real
+              </h3>
+              <p class="text-secondary text-sm uppercase tracking-wider">360° Ses Algılama</p>
+            </a>
+          </div>
+        </div>
+
+        <div class="border-t border-outline-variant/30 mb-20"></div>
+
+        <!-- ===== PHONAK ===== -->
+        <div class="mb-20">
+          <div class="flex items-center justify-between mb-8">
+            <a href="https://www.phonak.com/tr-tr/isitme-cihazlar%C4%B1/i%C5%9Fitme-cihazlar%C4%B1" target="_blank"
+              rel="noopener" class="flex items-center gap-4 group">
+              <img src="https://www.phonak.com/content/dam/phonak/en/badges/phonak-logo.svg" alt="Phonak Logo"
+                class="h-10 object-contain group-hover:opacity-70 transition-opacity" />
+              <span
+                class="material-symbols-outlined text-primary text-sm opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+            </a>
+            <a href="https://www.phonak.com/tr-tr/isitme-cihazlar%C4%B1/i%C5%9Fitme-cihazlar%C4%B1" target="_blank"
+              rel="noopener"
+              class="text-primary text-sm font-bold border-b border-primary/20 pb-0.5 hover:border-primary transition-all">
+              Tüm Phonak cihazları →
+            </a>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <a href="https://www.phonak.com/tr-tr/isitme-cihazlar%C4%B1/i%C5%9Fitme-cihazlar%C4%B1" target="_blank"
+              rel="noopener" class="group block">
+              <div
+                class="aspect-[4/3] bg-surface-container-low mb-4 relative overflow-hidden flex items-center justify-center p-8 rounded-xl">
+                <img alt="Phonak Audeo Sphere Infinio"
+                  class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700"
+                  src="https://www.phonak.com/content/dam/celum/phonak/master-assets/en/products/infinio/audeo-i-sphere/ph-packshot-audeo-i-sphere-x-receiver-050-1029-p6/ph-packshot-audeo-i-sphere-x-receiver-050-1029-p6-1920x1920.png" />
+                <div class="absolute top-3 right-3">
+                  <span class="bg-primary text-white px-2 py-1 text-[10px] font-bold uppercase">Çok Satan</span>
+                </div>
+              </div>
+              <h3 class="text-lg font-bold tracking-tight mb-1 group-hover:text-primary transition-colors">Audeo Sphere
+                Infinio</h3>
+              <p class="text-secondary text-sm uppercase tracking-wider">AI — RIC Şarjlı</p>
+            </a>
+            <a href="https://www.phonak.com/tr-tr/isitme-cihazlar%C4%B1/i%C5%9Fitme-cihazlar%C4%B1" target="_blank"
+              rel="noopener" class="group block md:mt-8">
+              <div
+                class="aspect-[4/3] bg-surface-container-low mb-4 relative overflow-hidden flex items-center justify-center p-8 rounded-xl">
+                <img alt="Phonak Virto I-10"
+                  class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700"
+                  src="https://www.phonak.com/content/dam/celum/phonak/master-assets/tr/products/infinio/virto-i-10-nw-o/ph-packshot-virto-p-cic-10-omni-f14-s19-left-pb/ph-packshot-virto-p-cic-10-omni-f14-s19-left-pb-1920x1920.png" />
+              </div>
+              <h3 class="text-lg font-bold tracking-tight mb-1 group-hover:text-primary transition-colors">Virto Infinio
+              </h3>
+              <p class="text-secondary text-sm uppercase tracking-wider">Görünmez — CIC</p>
+            </a>
+            <a href="https://www.phonak.com/tr-tr/isitme-cihazlar%C4%B1/i%C5%9Fitme-cihazlar%C4%B1" target="_blank"
+              rel="noopener" class="group block">
+              <div
+                class="aspect-[4/3] bg-surface-container-low mb-4 relative overflow-hidden flex items-center justify-center p-8 rounded-xl">
+                <img alt="Phonak Naida Lumity"
+                  class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700"
+                  src="https://www.phonak.com/content/dam/celum/phonak/master-assets/tr/products/lumity/naida-l-sp/ph-packshot-naida-l-sp-hook-050-1099-p4/ph-packshot-naida-l-sp-hook-050-1099-p4-1920x1920.png" />
+              </div>
+              <h3 class="text-lg font-bold tracking-tight mb-1 group-hover:text-primary transition-colors">Naida Lumity
+              </h3>
+              <p class="text-secondary text-sm uppercase tracking-wider">Güçlü Kayıplar İçin</p>
+            </a>
+          </div>
+        </div>
+
+        <div class="border-t border-outline-variant/30 mb-20"></div>
+
+        <!-- ===== WİDEX ===== -->
+        <div class="mb-20">
+          <div class="flex items-center justify-between mb-8">
+            <a href="https://www.widex.com/tr-tr/isitme-cihazlari/isitme-cihazlari-hakkinda/isitme-cihazi-fiyatlari/"
+              target="_blank" rel="noopener" class="flex items-center gap-4 group">
+              <img
+                src="https://azurecdn.widex.com/-/media/widex/global/images/logos/widex---light-sand---rgb.svg?rev=99b5329b6cfd43e1b12e2d4ebf05031e&hash=E318287C13100B8EB921521C8EC906CD"
+                alt="Widex Logo"
+                class="h-10 object-contain group-hover:opacity-70 transition-opacity bg-zinc-800 px-3 py-1 rounded" />
+              <span
+                class="material-symbols-outlined text-primary text-sm opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+            </a>
+            <a href="https://www.widex.com/tr-tr/isitme-cihazlari/isitme-cihazlari-hakkinda/isitme-cihazi-fiyatlari/"
+              target="_blank" rel="noopener"
+              class="text-primary text-sm font-bold border-b border-primary/20 pb-0.5 hover:border-primary transition-all">
+              Tüm Widex cihazları →
+            </a>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <a href="https://www.widex.com/tr-tr/isitme-cihazlari/isitme-cihazlari-hakkinda/isitme-cihazi-fiyatlari/"
+              target="_blank" rel="noopener" class="group block">
+              <div
+                class="aspect-[4/3] bg-surface-container-low mb-4 relative overflow-hidden flex items-center justify-center p-8 rounded-xl">
+                <img alt="Widex SmartRIC"
+                  class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700"
+                  src="https://azurecdn.widex.com/-/media/widex/global/images/products/smartric/widex-smartric_tech-black_pair_shadow_background_new_1000x800.jpg?rev=a3d1e1ce69064c9891b1962d822565bb&hash=781A00EE962C8B95E76A49838D579860" />
+                <div class="absolute top-3 right-3">
+                  <span class="bg-primary text-white px-2 py-1 text-[10px] font-bold uppercase">Yeni</span>
+                </div>
+              </div>
+              <h3 class="text-lg font-bold tracking-tight mb-1 group-hover:text-primary transition-colors">Widex
+                SmartRIC</h3>
+              <p class="text-secondary text-sm uppercase tracking-wider">Akıllı RIC Tasarım</p>
+            </a>
+            <a href="https://www.widex.com/tr-tr/isitme-cihazlari/isitme-cihazlari-hakkinda/isitme-cihazi-fiyatlari/"
+              target="_blank" rel="noopener" class="group block md:mt-8">
+              <div
+                class="aspect-[4/3] bg-surface-container-low mb-4 relative overflow-hidden flex items-center justify-center p-8 rounded-xl">
+                <img alt="Widex Moment Sheer"
+                  class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700"
+                  src="https://azurecdn.widex.com/-/media/widex/global/images/products/moment-sheer/sric-r-d/widex_moment_sric_silver-grey_single_shadow_bg_1000x800.jpg?rev=16c92b84cd9e43bdaa042857cc8e551f&hash=5FF769AFC1AA410D109E1B2D21D63E33" />
+              </div>
+              <h3 class="text-lg font-bold tracking-tight mb-1 group-hover:text-primary transition-colors">Moment Sheer
+              </h3>
+              <p class="text-secondary text-sm uppercase tracking-wider">Saf Ses Kalitesi</p>
+            </a>
+            <a href="https://www.widex.com/tr-tr/isitme-cihazlari/isitme-cihazlari-hakkinda/isitme-cihazi-fiyatlari/"
+              target="_blank" rel="noopener" class="group block">
+              <div
+                class="aspect-[4/3] bg-surface-container-low mb-4 relative overflow-hidden flex items-center justify-center p-8 rounded-xl">
+                <img alt="Widex Moment"
+                  class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700"
+                  src="https://azurecdn.widex.com/-/media/widex/global/images/products/moment/widex-moment_bte-r-d_cic_background_1000x800.jpg?rev=62bfc81e93df46eab0929a8175fec404&hash=22B22902E4C75FD556C4E2506C9C99AA" />
+              </div>
+              <h3 class="text-lg font-bold tracking-tight mb-1 group-hover:text-primary transition-colors">Widex Moment
+              </h3>
+              <p class="text-secondary text-sm uppercase tracking-wider">BTE / CIC</p>
+            </a>
+          </div>
+        </div>
+
+        <div class="border-t border-outline-variant/30 mb-20"></div>
+
+        <!-- ===== PHİLİPS ===== -->
+        <div>
+          <div class="flex items-center justify-between mb-8">
+            <a href="https://www.naturaisitme.com.tr/philips-isitme-cihazlari" target="_blank" rel="noopener"
+              class="flex items-center gap-4 group">
+              <img
+                src="https://assets.ha.demant.com/-/media/project/hearing-aid/philips/shared/logos/philips-logo.png?h=81&iar=0&w=152&rev=da3dd30c71f940b99e4bdf96bdab3ed2&hash=63AE78A8ADD01DCCC6EBFC8F278AC07D"
+                alt="Philips Logo" class="h-10 object-contain group-hover:opacity-70 transition-opacity" />
+              <span
+                class="material-symbols-outlined text-primary text-sm opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+            </a>
+            <a href="https://www.naturaisitme.com.tr/philips-isitme-cihazlari" target="_blank" rel="noopener"
+              class="text-primary text-sm font-bold border-b border-primary/20 pb-0.5 hover:border-primary transition-all">
+              Tüm Philips cihazları →
+            </a>
+          </div>
+          <!-- Philips — geniş tanıtım kartı (ürün görselleri JS ile yüklendiğinden marka odaklı kart) -->
+          <a href="https://www.naturaisitme.com.tr/philips-isitme-cihazlari" target="_blank" rel="noopener"
+            class="group flex flex-col md:flex-row items-center gap-8 md:gap-10 bg-surface-container-low rounded-xl p-8 md:p-10 hover:shadow-lg transition-shadow">
+            <div
+              class="flex-shrink-0 flex items-center justify-center bg-surface-container-low rounded-xl w-32 h-32 md:w-48 md:h-48 overflow-hidden relative shadow-inner">
+              <img src="assets/philips_device.png" alt="Philips HearLink İşitme Cihazı"
+                class="w-full h-full object-cover scale-110 group-hover:scale-125 transition-transform duration-700" />
+            </div>
+            <div class="flex-1 text-center md:text-left">
+              <h3 class="text-2xl font-bold tracking-tight mb-3 group-hover:text-primary transition-colors">Philips
+                HearLink</h3>
+              <p class="text-secondary mb-6 max-w-lg">Philips HearLink serisi; Alpha, Leox, Viron ve Encanta
+                modelleriyle her düzeyde işitme kaybına yönelik çözümler sunar. Bluetooth bağlantısı ve şarjlı
+                tasarımlarıyla modern yaşama uyum sağlar.</p>
+              <div class="flex flex-wrap gap-2 justify-center md:justify-start">
+                <span
+                  class="bg-white border border-outline-variant/30 px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full">HearLink
+                  Alpha</span>
+                <span
+                  class="bg-white border border-outline-variant/30 px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full">HearLink
+                  Leox</span>
+                <span
+                  class="bg-white border border-outline-variant/30 px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full">HearLink
+                  Viron</span>
+                <span
+                  class="bg-white border border-outline-variant/30 px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full">HearLink
+                  Encanta</span>
+              </div>
+            </div>
+            <span
+              class="material-symbols-outlined text-primary text-3xl group-hover:translate-x-1 transition-transform">arrow_forward</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- HİZMETLER (Bento Grid) -->
+    <section class="py-16 md:py-32 bg-surface-container-low" id="hizmetler">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16 md:mb-24">
+          <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-6">Her Frekansta Uzmanlık</h2>
+          <p class="text-secondary max-w-xl mx-auto">
+            On yılı aşkın klinik deneyimimizi en son odyolojik teknolojilerle harmanlayarak
+            size en doğru çözümü sunuyoruz.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 h-auto">
+          <!-- Kare Mavi/Gri kart (Eski büyük kart) -->
+          <div
+            class="lg:col-span-4 bg-surface-container-lowest p-8 md:p-12 rounded-xl flex flex-col justify-between overflow-hidden group shadow-sm border border-outline-variant/10">
+            <div class="relative z-10">
+              <span class="material-symbols-outlined text-primary text-5xl mb-6 md:mb-8"
+                style="font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 48">biotech</span>
+              <h3 class="text-3xl font-bold mb-4">Klinik Hassasiyet</h3>
+              <p class="text-secondary text-base lg:text-lg break-words whitespace-normal">
+                Odyologlarımız, 0,1 dB hassasiyetle işitme haritanızı çıkaran
+                profesyonel odyometri ekipmanlarıyla çalışmaktadır.
+              </p>
+            </div>
+          </div>
+          <!-- Kırmızı Geniş kart -->
+          <div class="lg:col-span-8 bg-primary p-12 rounded-xl text-white flex flex-col justify-end relative overflow-hidden group">
+            <div class="relative z-10 max-w-2xl">
+              <span class="material-symbols-outlined text-5xl mb-8"
+                style="font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 48">memory</span>
+              <h3 class="text-3xl font-bold mb-4">Yapay Zeka Uyumu</h3>
+              <p class="text-on-primary-container text-lg">
+                Çevrenizi öğrenen akıllı ses işleme; gürültüyü filtreler, konuşmayı netleştirir. Gittiğiniz her ortamı analiz ederek cihazınızın ayarlarını otomatik optimize eder.
+              </p>
+            </div>
+            <span class="material-symbols-outlined absolute right-12 top-1/2 -translate-y-1/2 text-9xl opacity-10 group-hover:opacity-20 transition-all duration-700 pointer-events-none group-hover:scale-110" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 48">neurology</span>
+          </div>
+          <!-- Alt sol -->
+          <div class="lg:col-span-4 bg-surface-container-high p-8 md:p-12 rounded-xl">
+            <span class="material-symbols-outlined text-primary text-5xl mb-6 md:mb-8"
+              style="font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 48">favorite</span>
+            <h3 class="text-2xl font-bold mb-4">Ömür Boyu Bakım</h3>
+            <p class="text-secondary">
+              Cihazınızın ömrü boyunca ücretsiz ayar, temizlik ve yıllık kontrol hizmeti.
+            </p>
+          </div>
+          <!-- Alt sağ -->
+          <div class="lg:col-span-8 bg-white border border-outline-variant/20 p-8 md:p-12 rounded-xl flex flex-col justify-center">
+            <span class="material-symbols-outlined text-primary text-5xl mb-6 md:mb-8"
+              style="font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 48">tune</span>
+            <div class="max-w-2xl">
+              <h3 class="text-2xl md:text-3xl font-bold mb-4">Size Özel İşitme Çözümleri</h3>
+              <p class="text-secondary text-lg leading-relaxed">Uzman odyologlarımız tarafından yapılan kapsamlı testler
+                sonucunda, kulak yapınıza ve yaşam tarzınıza en uygun kaliteli cihazı belirliyoruz.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RANDEVU / CTA -->
+    <section class="py-20 md:py-40 bg-surface relative overflow-hidden" id="iletisim">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+
+        <h2 class="text-4xl md:text-6xl font-bold tracking-tighter mb-6 md:mb-8">Sesi yeniden keşfetmeye hazır mısınız?</h2>
+        <p class="text-lg md:text-xl text-secondary mb-8 max-w-2xl mx-auto">
+          Çanakkale'nin önde gelen işitme merkezi olarak 2000'den fazla hastamıza yardımcı olduk.
+        </p>
+        <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-secondary">
+          <div class="flex items-center gap-2 text-center md:text-left">
+            <span class="material-symbols-outlined text-3xl md:text-xl text-primary">location_on</span>
+            <span class="leading-tight">İsmetpaşa Mahallesi, Demircioğlu Caddesi<br />No:1/4 Merkez / Çanakkale</span>
+          </div>
+          <div class="hidden md:block w-px h-8 bg-outline-variant/50"></div>
+          <div class="flex flex-col sm:flex-row items-center gap-4 md:gap-8 mt-4 md:mt-0">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-xl text-primary">mail</span>
+              <a href="mailto:duyumisitme@hotmail.com"
+                class="text-primary font-semibold hover:underline">duyumisitme@hotmail.com</a>
+            </div>
+            <div class="hidden sm:block w-px h-4 bg-outline-variant/50"></div>
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-xl text-primary">call</span>
+              <a href="tel:+902865018888" class="text-primary font-semibold hover:underline">0 (286) 501 88 88</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="absolute -right-20 -bottom-20 w-96 h-96 bg-primary-container/5 rounded-full blur-3xl pointer-events-none">
+      </div>
+      <div class="absolute -left-20 top-20 w-64 h-64 bg-tertiary/5 rounded-full blur-3xl pointer-events-none"></div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="w-full py-12 px-6 mt-auto bg-zinc-50 font-body text-sm leading-relaxed">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+      <div class="lg:col-span-1">
+        <div class="flex items-center mb-4">
+          <img src="assets/logo_clean.jpg" alt="Duyum İşitme Logo" class="h-14 object-contain mix-blend-multiply">
+        </div>
+        <p class="text-zinc-500 mb-6 max-w-xs">
+          Çanakkale'nin güvenilir işitme sağlığı merkezi. Bilim ve yaşam kalitesini bir arada sunuyoruz.
+        </p>
+        <div class="flex flex-col gap-3">
+          <a href="tel:+902865018888"
+            class="flex items-center gap-2 text-zinc-500 hover:text-primary transition-colors group">
+            <span class="material-symbols-outlined text-xl group-hover:scale-110 transition-transform">call</span>
+            <span class="font-medium">0 (286) 501 88 88</span>
+          </a>
+          <a href="https://www.instagram.com/duyumcanakkale/" target="_blank" rel="noopener"
+            class="flex items-center gap-2 text-zinc-500 hover:text-primary transition-colors group">
+            <svg class="w-5 h-5 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm3.98-10.169a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z" />
+            </svg>
+            <span class="font-medium">Instagram</span>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-bold text-zinc-900 mb-6 uppercase tracking-wider">Sayfalar</h4>
+        <ul class="space-y-4">
+          <li><a class="text-zinc-500 hover:text-red-600 hover:translate-x-1 transition-all duration-200 block"
+              href="#hero">Ana Sayfa</a></li>
+          <li><a class="text-zinc-500 hover:text-red-600 hover:translate-x-1 transition-all duration-200 block"
+              href="#kurumsal">Kurumsal</a></li>
+          <li><a class="text-zinc-500 hover:text-red-600 hover:translate-x-1 transition-all duration-200 block"
+              href="#bilgi">Bilgi</a></li>
+          <li><a class="text-zinc-500 hover:text-red-600 hover:translate-x-1 transition-all duration-200 block"
+              href="#urunler">Cihazlar</a></li>
+          <li><a class="text-zinc-500 hover:text-red-600 hover:translate-x-1 transition-all duration-200 block"
+              href="#hizmetler">Hizmetler</a></li>
+          <li><a class="text-zinc-500 hover:text-red-600 hover:translate-x-1 transition-all duration-200 block"
+              href="#iletisim">İletişim</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-zinc-900 mb-6 uppercase tracking-wider">Hizmetler</h4>
+        <ul class="space-y-4">
+          <li><a class="text-zinc-500 hover:text-red-600 hover:translate-x-1 transition-all duration-200 block"
+              href="#hizmetler">İşitme Testi</a></li>
+          <li><a class="text-zinc-500 hover:text-red-600 hover:translate-x-1 transition-all duration-200 block"
+              href="#hizmetler">Tinnitus Yönetimi</a></li>
+          <li><a class="text-zinc-500 hover:text-red-600 hover:translate-x-1 transition-all duration-200 block"
+              href="#hizmetler">Cihaz Uyumu</a></li>
+          <li><a class="text-zinc-500 hover:text-red-600 hover:translate-x-1 transition-all duration-200 block"
+              href="#hizmetler">Çocuk Odyolojisi</a></li>
+          <li class="pt-2 border-t border-zinc-800 mt-2">
+            <span class="text-zinc-600 text-xs uppercase tracking-wider font-bold block mb-2">Markalarımız</span>
+          </li>
+          <li><a class="text-zinc-500 hover:text-red-600 hover:translate-x-1 transition-all duration-200 block"
+              href="https://www.oticon.com.tr/products/hearing-aids" target="_blank" rel="noopener">Oticon</a></li>
+          <li><a class="text-zinc-500 hover:text-red-600 hover:translate-x-1 transition-all duration-200 block"
+              href="https://www.phonak.com/tr-tr/isitme-cihazlar%C4%B1/i%C5%9Fitme-cihazlar%C4%B1" target="_blank"
+              rel="noopener">Phonak</a></li>
+          <li><a class="text-zinc-500 hover:text-red-600 hover:translate-x-1 transition-all duration-200 block"
+              href="https://www.widex.com/tr-tr/isitme-cihazlari/isitme-cihazlari-hakkinda/isitme-cihazi-fiyatlari/"
+              target="_blank" rel="noopener">Widex</a></li>
+          <li><a class="text-zinc-500 hover:text-red-600 hover:translate-x-1 transition-all duration-200 block"
+              href="https://www.naturaisitme.com.tr/philips-isitme-cihazlari" target="_blank" rel="noopener">Philips</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-zinc-900 mb-6 uppercase tracking-wider">Adres</h4>
+        <p class="text-zinc-500 leading-relaxed mb-4">
+          İsmetpaşa Mahallesi<br />
+          Demircioğlu Caddesi<br />
+          No:1/4 Merkez / Çanakkale
+        </p>
+      </div>
+    </div>
+    <div
+      class="max-w-7xl mx-auto mt-16 pt-8 border-t border-zinc-200 flex flex-col md:flex-row justify-between items-center text-zinc-400 text-xs uppercase tracking-[0.2em]">
+      <p>© 2026 Duyum İşitme Merkezi. Tüm Hakları Saklıdır.</p>
+      <p class="mt-4 md:mt-0">Çanakkale • Uzman Kadro</p>
+    </div>
+  </footer>
+
+  <!-- Mobil Alt Navigasyon -->
+  <nav
+    class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-16 px-4 bg-white/90 backdrop-blur-xl z-50 rounded-t-xl shadow-[0_-10px_30px_rgba(0,0,0,0.03)] border-t border-zinc-100">
+    <a class="flex flex-col items-center justify-center text-red-700 scale-110" href="#hero">
+      <span class="material-symbols-outlined text-[22px]">home</span>
+      <span class="font-headline text-[10px] font-bold uppercase tracking-tighter">Ana Sayfa</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-zinc-400 hover:text-red-700" href="#kurumsal">
+      <span class="material-symbols-outlined text-[22px]">corporate_fare</span>
+      <span class="font-headline text-[10px] font-bold uppercase tracking-tighter">Kurumsal</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-zinc-400 hover:text-red-700" href="#urunler">
+      <span class="material-symbols-outlined text-[22px]">hearing</span>
+      <span class="font-headline text-[10px] font-bold uppercase tracking-tighter">Cihazlar</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-zinc-400 hover:text-red-700" href="#iletisim">
+      <span class="material-symbols-outlined text-[22px]">contact_phone</span>
+      <span class="font-headline text-[10px] font-bold uppercase tracking-tighter">İletişim</span>
+    </a>
+  </nav>
+
+  <script src="script.js?v=4"></script>
+</body>
+
+</html>

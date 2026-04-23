@@ -7,7 +7,7 @@
   <title>Duyum İşitme Merkezi | Çanakkale</title>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
     rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block"
     rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <script id="tailwind-config">
@@ -86,6 +86,12 @@
 
     body {
       min-height: max(884px, 100dvh);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    body.loaded {
+      opacity: 1;
     }
 
     .nav-link-active {
@@ -848,7 +854,15 @@
     </a>
   </nav>
 
-  <script src="script.js?v=4"></script>
+  <script>
+    // Show page only after everything is loaded
+    document.fonts.ready.then(() => {
+      document.body.classList.add('loaded');
+    });
+    // Fallback: show page after max 2 seconds regardless
+    setTimeout(() => document.body.classList.add('loaded'), 2000);
+  </script>
+  <script src="script.js?v=5"></script>
 </body>
 
 </html>
